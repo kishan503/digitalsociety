@@ -1,0 +1,108 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+			
+    <!-- Page Content -->
+    <div class="content container-fluid">
+    
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Complaint</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Complaint</li>
+                    </ul>
+                </div>
+                <div class="col-auto float-right ml-auto">
+                    <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_holiday"><i class="fa fa-plus"></i> Add Complaint</a>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Complaint</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>NO</th>
+                                        <th>Email</th>
+                                        <th>Flat no</th>
+                                        <th>Complaint Subject</th>
+                                        <th>Complaint Discription</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in complaint %}
+                                    <tr>
+                                        <td>{{forloop.counter}}</td>
+                                        <td>{{i.email}}</td>
+                                        <td>{{i.flat_no}}</td>
+                                        <td>{{i.c_subject}}</td>
+                                        <td>{{i.c_discription}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Content -->
+    
+    <!-- Add Holiday Modal -->
+    <div class="modal custom-modal fade" id="add_holiday" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Visitor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action={% url 'add_complaint' %} method='POST'>
+                        {% csrf_token %}
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input class="form-control" name='email' type="email" placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                                <label>Flat No</label>
+                                <input class="form-control" name='flatno' type="text" placeholder="Enter Flat No">
+                            </div>
+                            <div class="form-group">
+                                <label>Complaint Subject</label>
+                                <input class="form-control" name='c_subject' type="text" placeholder="Enter Complaint Subject">
+                            </div>
+                            <div class="form-group">
+                                <label>Complaint Discription</label>
+                                <div class="col-lg-9">
+                                    <textarea name=c_discription type='text' rows="4" cols="5" class="form-control" placeholder="Enter Complaint"></textarea>
+                                </div>
+                            </div>
+                            <div class="submit-section">
+                                <input class="btn btn-primary submit-btn" type='submit'>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Add Holiday Modal -->
+</div>
+<!-- /Page Wrapper -->
+
+{% endblock %}

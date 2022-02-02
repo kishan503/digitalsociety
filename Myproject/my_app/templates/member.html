@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}	
+<!-- Page Content -->
+<div class="main-wrapper">
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title">Society Members</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- /Page Header -->
+            
+            <!-- Search Filter -->
+            
+            
+            <!-- Search Filter -->
+            
+            <div class="row staff-grid-row">
+                {% for i in member %}
+                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
+                    <div class="profile-widget">
+                        <div class="profile-img">
+                            <a href="profile.html" class="avatar"></a>
+                        </div>
+                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">{{i.first_name}} {{i.last_name}}</a></h4>
+                        <div class="small text-muted">Member</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- /Page Content -->
+    </div>
+</div>
+<!-- /Delete Employee Modal -->
+{% endblock%}

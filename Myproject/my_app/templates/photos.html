@@ -1,0 +1,64 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}	
+<!-- Page Content -->
+<div class="main-wrapper">
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title">Gallary</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- /Page Header -->
+            
+            <!-- Search Filter -->
+            
+            
+            <!-- Search Filter -->
+            
+            {% comment %} <div class="row staff-grid-row">
+                {% for i in chairman %}
+                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
+                    <div class="profile-widget" style="height : 192px; padding-bottom: 5px; padding-top: 5px; padding-right: 5px; padding-left: 5px;" >
+                        <div>
+                            <a href="profile.html"><img src="{% static 'assets\img\profiles\avatar-02.jpg' %}" alt style=" height:180px; width:272.800px; "></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="row staff-grid-row">
+                {% for i in member %}
+                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
+                    <div class="profile-widget" style="height : 192px; padding-bottom: 5px; padding-top: 5px; padding-right: 5px; padding-left: 5px;">
+                        <div>
+                            <a href="profile.html" ><img src="{% static 'assets\img\profiles\avatar-02.jpg' %}" alt style=" height:180px; width:272.800px; "></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="row staff-grid-row">
+                {% for i in watchman %}
+                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
+                    <div class="profile-widget" style="height : 192px; padding-bottom: 5px; padding-top: 5px; padding-right: 5px; padding-left: 5px;">
+                        <div>
+                            <a href="profile.html"><img src="{% static 'assets\img\profiles\avatar-02.jpg' %}" alt style=" height:180px; width:272.800px; "></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div> {% endcomment %}
+        </div>
+        <!-- /Page Content -->
+    </div>
+</div>
+<!-- /Delete Employee Modal -->
+{% endblock%}

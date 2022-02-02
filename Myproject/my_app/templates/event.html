@@ -1,0 +1,91 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}	
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+
+    <!-- Page Content -->
+    <div class="content">
+        
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Event</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Event</li>
+                    </ul>
+                </div>
+                <div class="col-auto float-right ml-auto">
+                    <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_holiday"><i class="fa fa-plus"></i> Add Event</a>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="activity">
+                    <div class="activity-box">
+                        <ul class="activity-list">
+                            {% for i in event %}
+                            <li>
+                                <div class="activity-content">
+                                    <div class="timeline-content">
+                                        <a href="profile.html" class="name">{{i.m_name}}</a> has organized Event on {{i.e_date}} --> <a href="#">{{i.e_name}}</a>
+                                        <span class="time">Created at {{i.date}}</span>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Content -->
+    <div class="modal custom-modal fade" id="add_holiday" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Event</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action={% url 'add_event' %} method='POST'>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>Event Organizer</label>
+                            <input class="form-control" name='m_name' type="text" placeholder="Enter Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Event Name</label>
+                            <input class="form-control" name='e_name' type="text" placeholder="Enter Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Event Date</label>
+                            <div class="cal-icon">
+                                <input class="form-control datetimepicker" name='e_date'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Event Discription</label>
+                            <div class="col-lg-9">
+                                <textarea name='e_discription' type='text' rows="4" cols="5" class="form-control" placeholder="Enter Discription"></textarea>
+                            </div>
+                        </div>
+                        <div class="submit-section">
+                            <input class="btn btn-primary submit-btn" type='submit'>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Page Wrapper -->
+{% endblock %}

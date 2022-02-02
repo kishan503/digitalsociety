@@ -1,0 +1,83 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}	
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+
+    <!-- Page Content -->
+    <div class="content">
+        
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Notice</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Notice</li>
+                    </ul>
+                </div>
+                <div class="col-auto float-right ml-auto">
+                    <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_holiday"><i class="fa fa-plus"></i> Add Notice</a>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="activity">
+                    <div class="activity-box">
+                        <ul class="activity-list">
+                            {% for i in notice %}
+                            <li>
+                                <div class="activity-content">
+                                    <div class="timeline-content">
+                                        <a href="profile.html" class="name">{{i.name}}</a> Added New Notice <a href="#">{{i.n_subject}}</a>
+                                        <span class="time">Created at {{i.n_date}}</span>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Content -->
+    <div class="modal custom-modal fade" id="add_holiday" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Notice</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action={% url 'add_notice' %} method='POST'>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input class="form-control" name='name' type="text" placeholder="Enter Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Notice Subject</label>
+                            <input class="form-control" name='n_subject' type="text" placeholder="Enter Notice Subject">
+                        </div>
+                        <div class="form-group">
+                            <label>Notice Discription</label>
+                            <input class="form-control" name='n_discription' type="text" placeholder="Enter Notice discription">
+                        </div>
+                        <div class="submit-section">
+                            <input class="btn btn-primary submit-btn" type='submit'>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Page Wrapper -->
+{% endblock %}

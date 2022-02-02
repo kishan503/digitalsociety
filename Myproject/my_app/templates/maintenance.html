@@ -1,0 +1,62 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}	
+<!-- Page Content -->
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+                    
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Member Maintenance</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+        
+        <!-- Search Filter -->
+        
+        <!-- /Search Filter -->
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped custom-table datatable">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Flat No</th>
+                                <th>Phone number</th>
+                                <th>Maintenance</th>
+                                <th>Payslip</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in member %}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>
+                                    <h2 class="table-avatar">
+                                        <a href="profile.html">{{i.first_name}} {{i.last_name}}</a>
+                                    </h2>
+                                </td>
+                                <td>{{i.flat_no}}</td>
+                                <td>{{i.phone_number}}</td>
+                                <td>15000</td>
+                                <td><a class="btn btn-sm btn-primary" href="{% url 'pdf' %}">Download Slip</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
